@@ -100,8 +100,7 @@ function ted_scripts_and_styles()
 
     if ( !is_admin() ) {
 		// register main stylesheet
-		wp_register_style( 'ted-bootstrapp', get_stylesheet_directory_uri() . '/library/css/bootstrap.min.css', array(), '', 'all' );
-		wp_register_style( 'ted-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.min.css', array(), '', 'all' );
+		wp_register_style( 'ted-styles', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
 		// ie-only style sheet
 		wp_register_style( 'ted-ie-only', get_stylesheet_directory_uri() . '/library/css/ie.css', array(), '' );
 
@@ -110,19 +109,14 @@ function ted_scripts_and_styles()
             wp_enqueue_script( 'comment-reply' );
 
 		//adding scripts file in the footer
-		wp_register_script( 'jquery', get_stylesheet_directory_uri() . '/library/js/jquery-3.3.1.min.js', array( 'jquery' ), '', true );
-		wp_register_script( 'ted-bootstrapp', get_stylesheet_directory_uri() . '/library/js/bootstrap.min.js', array( 'jquery' ), '', true );
-		wp_register_script( 'ted-js', get_stylesheet_directory_uri() . '/library/js/script.min.js', array( 'jquery' ), '', true );
+		wp_register_script( 'ted-js', get_stylesheet_directory_uri() . '/library/js/script.js', array( 'jquery' ), '', true );
 
 		// enqueue styles and scripts
-		wp_enqueue_style( 'ted-bootstrapp' );
-		wp_enqueue_style( 'ted-stylesheet' );
+		wp_enqueue_style( 'ted-styles' );
 		wp_enqueue_style( 'ted-ie-only' );
         // add conditional wrapper around ie stylesheet
 		$wp_styles->add_data( 'ted-ie-only', 'conditional', 'lt IE 9' );
 
-		wp_enqueue_script( 'ted-bootstrapp' );
-		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'ted-js' );
 	}
 }
